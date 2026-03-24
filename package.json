@@ -46,4 +46,7 @@
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.7.3"
   }
+  "engines": {
+  "node": "18.x"
+}
 }
