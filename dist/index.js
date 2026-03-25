@@ -16,9 +16,12 @@ const videoRoutes_1 = __importDefault(require("./routes/videoRoutes"));
 const jobRoutes_1 = __importDefault(require("./routes/jobRoutes"));
 const queue_1 = require("./config/queue");
 const app = (0, express_1.default)();
-app.use((0, cors_1.default)({
-    origin: ['http://localhost:5173'],
-    credentials: false
+app.use(cors({
+    origin: [
+        'http://localhost:5173',
+        'https://video-notes-ai-frontend.vercel.app'
+    ],
+    credentials: true
 }));
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
