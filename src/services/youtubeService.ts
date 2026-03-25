@@ -1,4 +1,4 @@
-import { YoutubeTranscript } from 'youtube-transcript'
+const { getTranscript } = require('youtube-transcript-api')
 
 export interface TranscriptSegment {
   start: number
@@ -27,10 +27,10 @@ export const extractVideoId = (url: string): string | null => {
 }
 
 export const fetchYoutubeTranscript = async (videoId: string): Promise<TranscriptSegment[]> => {
-  const raw = await YoutubeTranscript.fetchTranscript(videoId)
+  const raw = await getTranscript(videoId)
   return raw.map((item) => ({
-    start: item.offset,
-    end: item.offset + item.duration,
+    start: item.start,
+    end: item.start + item.duration,
     text: item.text
   }))
 }
