@@ -47,10 +47,10 @@ app.use('/api/jobs', jobRoutes_1.default);
 app.get('/api/health', (_req, res) => {
     res.json({ status: 'ok' });
 });
-const port = env_1.env.port;
-app.listen(port, () => {
-    // eslint-disable-next-line no-console
-    console.log(`Backend listening on http://localhost:${port}`);
+const PORT = process.env.PORT || env.port || 4000;
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
 });
 try {
     (0, queue_1.startVideoWorker)();
